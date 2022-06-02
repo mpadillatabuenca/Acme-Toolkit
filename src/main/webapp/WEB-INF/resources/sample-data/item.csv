@@ -8,3 +8,4 @@ item-06, "Item-06","PBA-341","Technology-02","Description of the item 06","EUR 1
 item-07, "Item-07","LBA-341","Technology-02","Description of the item 07","USD 15,000.98","https://www.google.com/",TOOL,true,inventor-02
 item-08, "Item-08","HBA-341","Technology-01","Description of the item 08","USD 15,000.98","https://www.google.com/",COMPONENT,false,inventor-01
 item-09, "Item-09","QBA-341","Technology-02","Description of the item 09","USD 15,000.98","https://www.google.com/",COMPONENT,false,inventor-02
+item-10, "Item-10","PBZ-341","Technology-10","Description of the item 10","EUR 15,000.98","https://www.google.com/",TOOL,true,inventor-01

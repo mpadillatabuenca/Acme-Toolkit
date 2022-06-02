@@ -15,9 +15,11 @@
 <%@taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="acme" uri="urn:jsptagdir:/WEB-INF/tags"%>
 
-<acme:form readonly="true">
-    <acme:input-textbox code="authenticated.inventor.chimpun.form.label.code" path="code"/>	
-	<acme:input-textbox code="authenticated.inventor.chimpun.form.label.creationMoment" path="creationMoment"/>	
+<acme:form>
+	<jstl:if test="${acme:anyOf(command, 'show, update, delete')}">
+    	<acme:input-textbox code="authenticated.inventor.chimpun.form.label.code" path="code" readonly="true"/>	
+		<acme:input-textbox code="authenticated.inventor.chimpun.form.label.creationMoment" path="creationMoment" readonly="true"/>	
+	</jstl:if>
 	<acme:input-textbox code="authenticated.inventor.chimpun.form.label.title" path="title"/>	
 	<acme:input-textbox code="authenticated.inventor.chimpun.form.label.description" path="description"/>	
 	<acme:input-textbox code="authenticated.inventor.chimpun.form.label.startTime" path="startTime"/>
@@ -25,6 +27,26 @@
 	<acme:input-textbox code="authenticated.inventor.chimpun.form.label.budget" path="budget"/>
 	<acme:input-textbox code="authenticated.inventor.chimpun.form.label.optionalLink" path="optionalLink"/>
 	
-	<acme:button code="authenticated.inventor.chimpun.form.button.associatedTool" action="/inventor/item/show?id=${itemId}"/>
+	
+	<jstl:choose>	 
+		<jstl:when test="${acme:anyOf(command, 'show, update, delete')}">
+		<acme:input-select code="inventor.chimpun.form.label.toolUpdate" path="itemId">
+	   			<jstl:forEach items="${tools}" var="tool">
+					<acme:input-option code="${tool.getName()}" value="${tool.getId()}"/>
+				</jstl:forEach>
+			</acme:input-select>
+			<acme:button code="authenticated.inventor.chimpun.form.button.associatedTool" action="/inventor/item/show?id=${itemId}"/>
+			<acme:submit code="authenticated.inventor.chimpun.form.button.update" action="/inventor/chimpun/update"/>
+			<acme:submit code="authenticated.inventor.chimpun.form.button.delete" action="/inventor/chimpun/delete"/>
+		</jstl:when>
+		<jstl:when test="${acme:anyOf(command, 'create')}">
+		<acme:input-select code="inventor.chimpun.form.label.tool" path="itemId">
+	   			<jstl:forEach items="${tools}" var="tool">
+					<acme:input-option code="${tool.getName()}" value="${tool.getId()}"/>
+				</jstl:forEach>
+			</acme:input-select>
+			<acme:submit code="authenticated.inventor.chimpun.form.button.create" action="/inventor/chimpun/create"/>
+		</jstl:when>		
+	</jstl:choose>
 </acme:form>
 

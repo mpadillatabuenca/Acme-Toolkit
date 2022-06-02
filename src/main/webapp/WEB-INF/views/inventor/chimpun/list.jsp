@@ -24,3 +24,7 @@
 	<acme:list-column code="authenticated.inventor.chimpun.list.label.endingTime" path="endingTime" width="10%"/>
 	<acme:list-column code="authenticated.inventor.chimpun.list.label.budget" path="budget" width="15%"/>
 </acme:list>	
+
+<jstl:if test="${acme:anyOf(command, 'list')}">
+	<acme:button code="authenticated.inventor.chimpun.list.button.create" action="/inventor/chimpun/create"/>
+</jstl:if>	

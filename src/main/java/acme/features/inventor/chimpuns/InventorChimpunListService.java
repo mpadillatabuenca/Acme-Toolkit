@@ -50,7 +50,7 @@ public class InventorChimpunListService implements AbstractListService<Inventor,
 		final Principal principal;
  
 		principal = request.getPrincipal();
-		result = this.repository.findAllChimpunsFromInventor(principal.getAccountId());
+		result = this.repository.findAllChimpunsFromInventor(principal.getActiveRoleId());
 		return result;
 		
 	}

@@ -21,7 +21,20 @@ authenticated.inventor.chimpun.form.label.code = Código
 authenticated.inventor.chimpun.form.label.creationMoment = Fecha de creación
 authenticated.inventor.chimpun.form.label.title = Título
 authenticated.inventor.chimpun.form.label.description = Descripción
-authenticated.inventor.chimpun.form.label.startTime = Comienzo del periodo
-authenticated.inventor.chimpun.form.label.endingTime = Final del periodo
+authenticated.inventor.chimpun.form.label.startTime = Comienzo del periodo (YYYY/MM/DD hh:mm)
+authenticated.inventor.chimpun.form.label.endingTime = Final del periodo (YYYY/MM/DD hh:mm)
 authenticated.inventor.chimpun.form.label.budget = Presupuesto
 authenticated.inventor.chimpun.form.label.item = Herramienta asociada
+
+authenticated.inventor.chimpun.form.button.delete = Borrar chimpun
+
+inventor.chimpun.form.error.startDateAfterMonth = La fecha de finalización debe ser 1 semana después que la fecha de inicio
+inventor.chimpun.form.error.creationDateAfterMonth = La fecha de inicio debe ser 1 mes después que la fecha actual
+inventor.chimpun.form.error.incorrectQuantity = La cantidad es inválida
+inventor.chimpun.form.error.incorrectCurrency = Este tipo de moneda no está aceptado
+
+authenticated.inventor.chimpun.list.button.create = Crear chimpun
+authenticated.inventor.chimpun.form.button.create = Crear chimpun
+authenticated.inventor.chimpun.form.button.update = Editar chimpun
+inventor.chimpun.form.label.tool = Selecciona herramienta
+inventor.chimpun.form.label.toolUpdate = Seleccionar herramienta (a actualizar)

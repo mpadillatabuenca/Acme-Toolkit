@@ -18,6 +18,7 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import acme.entities.chimpuns.Chimpun;
 import acme.entities.items.Item;
 import acme.entities.quantities.Quantity;
 import acme.entities.system_configurations.SystemConfiguration;
@@ -34,9 +35,16 @@ public interface InventorItemRepository extends AbstractRepository {
 	@Modifying
 	@Query("delete from Quantity q where q.id = :id")
 	void deleteQuantityById(int id);
+	
+	@Modifying
+	@Query("delete from Chimpun c where c.id = :id")
+	void deleteChimpunById(int id);
 
 	@Query("select qty from Quantity qty where qty.item.id = :id")
 	Collection<Quantity> findAllDutiesByItemId(int id);
+	
+	@Query("select c from Chimpun c where c.item.id = :id")
+	Collection<Chimpun> findAllChimpunsByItemId(int id);
 	
 	@Query("select i from Item i where i.code = :code")
 	Item findItemByCode(String code);

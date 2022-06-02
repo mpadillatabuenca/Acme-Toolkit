@@ -1,5 +1,5 @@
 /*
- * AuthenticatedAnnouncementShowService.java
+ * EmployerJobDeleteService.java
  *
  * Copyright (C) 2012-2022 Rafael Corchuelo.
  *
@@ -17,33 +17,39 @@ import org.springframework.stereotype.Service;
 
 import acme.entities.chimpuns.Chimpun;
 import acme.framework.components.models.Model;
+import acme.framework.controllers.Errors;
 import acme.framework.controllers.Request;
-import acme.framework.services.AbstractShowService;
+import acme.framework.services.AbstractDeleteService;
 import acme.roles.Inventor;
 
 @Service
-public class InventorChimpunShowService implements AbstractShowService<Inventor, Chimpun> {
+public class InventorChimpunDeleteService implements AbstractDeleteService<Inventor, Chimpun> {
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
 	protected InventorChimpunRepository repository;
 
-	// AbstractShowService<Administrator, Announcement> interface --------------
+	// AbstractDeleteService<Inventor, Item> interface -------------------------
 
 
 	@Override
 	public boolean authorise(final Request<Chimpun> request) {
 		assert request != null;
 		final int chimpunId = request.getModel().getInteger("id");
-		if(this.repository.findChimpunById(chimpunId) != null) {
-			final Chimpun chimpun = this.repository.findChimpunById(chimpunId);
-			final Inventor inventor = chimpun.getItem().getInventor();
-			
-			return request.isPrincipal(inventor);
-		}
-		return false;
+		final Chimpun chimpun = this.repository.findChimpunById(chimpunId);
+		final Inventor inventor = chimpun.getItem().getInventor();
 		
+		return request.isPrincipal(inventor);
+	}
+
+	@Override
+	public void bind(final Request<Chimpun> request, final Chimpun entity, final Errors errors) {
+		assert request != null;
+		assert entity != null;
+		assert errors != null;
+
+		request.bind(entity, errors, "code", "creationMoment", "title", "description", "startTime", "endingTime", "budget", "optionalLink");
 	}
 
 	@Override
@@ -68,6 +74,22 @@ public class InventorChimpunShowService implements AbstractShowService<Inventor,
 		result = this.repository.findChimpunById(id);
 
 		return result;
+	}
+	
+
+	@Override
+	public void validate(final Request<Chimpun> request, final Chimpun entity, final Errors errors) {
+		assert request != null;
+		assert entity != null;
+		assert errors != null;
+	}
+
+	@Override
+	public void delete(final Request<Chimpun> request, final Chimpun entity) {
+		assert request != null;
+		assert entity != null;
+			
+		this.repository.delete(entity);
 	}
 
 }

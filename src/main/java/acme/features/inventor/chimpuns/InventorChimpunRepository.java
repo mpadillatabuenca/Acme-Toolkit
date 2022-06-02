@@ -18,7 +18,10 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import acme.entities.chimpuns.Chimpun;
+import acme.entities.items.Item;
+import acme.entities.system_configurations.SystemConfiguration;
 import acme.framework.repositories.AbstractRepository;
+import acme.roles.Inventor;
 
 @Repository
 public interface InventorChimpunRepository extends AbstractRepository {
@@ -26,7 +29,18 @@ public interface InventorChimpunRepository extends AbstractRepository {
 	@Query("select c from Chimpun c where c.id = :id")
 	Chimpun findChimpunById(int id);
 	
-	@Query("select c from Chimpun c")
+	@Query("select i from Item i where i.id = :id")
+	Item findItemById(int id);
+	
+	@Query("select c from Chimpun c where c.item.inventor.id = :inventorId")
 	Collection<Chimpun> findAllChimpunsFromInventor(int inventorId);
+	
+	@Query("select i from Item i where i not in (select c.item from Chimpun c where c.item.inventor.id = :inventorId) and i.inventor.id = :inventorId and i.itemType = acme.entities.items.ItemType.TOOL")
+	Collection<Item> findAllToolsFromInventorWithoutChimpun(int inventorId);
+	
+	@Query("select i from Inventor i where i.id = :id")
+	Inventor findOneInventorById(int id);
 
+	@Query("select sc from SystemConfiguration sc")
+	Collection<SystemConfiguration> findAllConfigurations();
 }

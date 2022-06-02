@@ -10,7 +10,6 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
-import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.URL;
@@ -34,7 +33,7 @@ public class Chimpun extends AbstractEntity {
 	// Attributes
 	
 	@NotBlank
-	@Pattern(regexp = "^[0-9]{2}\\/[0-9]{2}\\/[0-9]{2}")
+	//@Pattern(regexp = "^[0-9]{2}.[0-9]{2}.[0-9]{2}$")
 	protected String code;
 	
 	@Temporal(TemporalType.TIMESTAMP)

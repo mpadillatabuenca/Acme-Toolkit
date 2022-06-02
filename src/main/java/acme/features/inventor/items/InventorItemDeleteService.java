@@ -17,6 +17,7 @@ import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import acme.entities.chimpuns.Chimpun;
 import acme.entities.items.Item;
 import acme.entities.quantities.Quantity;
 import acme.framework.components.models.Model;
@@ -99,10 +100,16 @@ public class InventorItemDeleteService implements AbstractDeleteService<Inventor
 
 		if(!entity.isPublished()) {
 			Collection<Quantity> quantities;
-
+			final Collection<Chimpun> chimpuns;
+			
 			quantities = this.repository.findAllDutiesByItemId(entity.getId());
 			for (final Quantity qty : quantities) {
 				this.repository.deleteQuantityById(qty.getId());
+			}
+			
+			chimpuns = this.repository.findAllChimpunsByItemId(entity.getId());
+			for (final Chimpun c : chimpuns) {
+				this.repository.deleteChimpunById(c.getId());
 			}
 			
 			this.repository.delete(entity);
