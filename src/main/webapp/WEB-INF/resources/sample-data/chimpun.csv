@@ -1,0 +1,5 @@
+key,code,creationMoment,title,description,startTime,endingTime,budget,optionalLink,key:item
+chimpun-01,22/05/01,2022/05/01 08:00,chimpun-01,Description of chimpun 01,2022/10/01 08:00,2022/11/01 08:00,"EUR 17,000.19","https://www.google.com/",item-01
+chimpun-02,22/04/17,2022/04/17 08:00,chimpun-02,Description of chimpun 02,2022/09/17 08:00,2022/10/17 08:00,"USD 20,500.00","https://www.google.com/",item-03
+chimpun-03,22/03/17,2022/03/17 08:00,chimpun-03,Description of chimpun 03,2022/11/17 08:00,2022/12/17 08:00,"EUR 18,000.50","https://www.google.com/",item-06
+chimpun-04,22/03/22,2022/03/22 08:00,chimpun-04,Description of chimpun 04,2022/12/17 08:00,2023/01/17 08:00,"USD 28,900.00","https://www.google.com/",item-07

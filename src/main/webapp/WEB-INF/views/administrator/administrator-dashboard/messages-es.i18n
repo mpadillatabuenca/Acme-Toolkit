@@ -29,3 +29,9 @@ administrator.dashboard.form.label.minimum-retail-price = Presupuesto mínimo de
 administrator.dashboard.form.label.maximum-retail-price = Presupuesto máximo de patrocinio
 administrator.dashboard.form.label.number.patronages = Número de patrocinios
 administrator.dashboard.form.description-table = Datos del panel de control
+
+administrator.dashboard.form.label.ratioOfChimpuns = Proporción de herramientas con chimpuns
+administrator.dashboard.form.label.average-budget = Presupuesto medio de los chimpuns
+administrator.dashboard.form.label.deviation-budget = Desviación media del presupuesto de los chimpuns
+administrator.dashboard.form.label.minimum-budget = Mínimo presupuesto de los chimpuns
+administrator.dashboard.form.label.maximum-budget = Máximo presupuesto de los chimpuns

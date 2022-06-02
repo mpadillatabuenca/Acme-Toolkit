@@ -157,6 +157,50 @@
 				${entry.key} = <fmt:formatNumber type="number" maxFractionDigits="2" minFractionDigits="2" value="${entry.value}"/><br>
 			</c:forEach>
 		</td>
+		</tr><tr>
+		<th scope="row">
+			<acme:message code="administrator.dashboard.form.label.ratioOfChimpuns"/>
+		</th>
+		<td>
+			<fmt:formatNumber type="number" maxFractionDigits="2" minFractionDigits="2" value="${ratioOfToolsWithChimpun}"/><br>
+		</td>
+		</tr><tr>
+		<th scope="row">
+			<acme:message code="administrator.dashboard.form.label.average-budget"/>
+		</th>
+		<td>
+			<c:forEach items="${averageBudgetPriceOfChimpunsByCurrency}" var="entry">
+				${entry.key} = <fmt:formatNumber type="number" maxFractionDigits="2" minFractionDigits="2" value="${entry.value}"/><br>
+			</c:forEach>
+		</td>
+		</tr><tr>
+		<th scope="row">
+			<acme:message code="administrator.dashboard.form.label.deviation-budget"/>
+		</th>
+		<td>
+			<c:forEach items="${deviationBudgetOfChimpunsByCurrency}" var="entry">
+				${entry.key} = <fmt:formatNumber type="number" maxFractionDigits="2" minFractionDigits="2" value="${entry.value}"/><br>
+			</c:forEach>
+		</td>
+		</tr><tr>
+		<th scope="row">
+			<acme:message code="administrator.dashboard.form.label.minimum-budget"/>
+		</th>
+		<td>
+			<c:forEach items="${minimumBudgetOfChimpunsByCurrency}" var="entry">
+				${entry.key} = <fmt:formatNumber type="number" maxFractionDigits="2" minFractionDigits="2" value="${entry.value}"/><br>
+			</c:forEach>
+		</td>
+		</tr><tr>
+		<th scope="row">
+			<acme:message code="administrator.dashboard.form.label.maximum-budget"/>
+		</th>
+		<td>
+			<c:forEach items="${maximumBudgetOfChimpunsByCurrency}" var="entry">
+				${entry.key} = <fmt:formatNumber type="number" maxFractionDigits="2" minFractionDigits="2" value="${entry.value}"/><br>
+			</c:forEach>
+		</td>
+		</tr><tr>
 	</tr>
 
 </table>

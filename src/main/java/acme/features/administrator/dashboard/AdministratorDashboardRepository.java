@@ -16,6 +16,7 @@ public interface AdministratorDashboardRepository extends AbstractRepository {
 	
 	@Query("select count(i) from Item i where i.itemType = :type")
 	Integer totalItems(ItemType type);
+	
 	@Query("select i.retailPrice.currency, i.technology, avg(i.retailPrice.amount), stddev(i.retailPrice.amount),  min(i.retailPrice.amount), max(i.retailPrice.amount) from Item i group by i.retailPrice.currency, i.technology")
 	List<Object[]> operationsRetailPriceItemsByTC(ItemType type);
 
@@ -25,4 +26,12 @@ public interface AdministratorDashboardRepository extends AbstractRepository {
 	@Query("select count(t), avg(t.budget.amount), stddev(t.budget.amount), min(t.budget.amount), max(t.budget.amount) from Patronage t where t.status = :type")
 	List<Object[]> operationsPatronagesByStatus(PatronageStatus type);
 
+	@Query("select c.budget.currency, avg(c.budget.amount), stddev(c.budget.amount), min(c.budget.amount), max(c.budget.amount) from Chimpun c group by c.budget.currency")
+	List<Object[]> operationsBudgetChimpunsByCurrency();
+	
+	@Query("select count(i) from Item i where i.itemType = acme.entities.items.ItemType.TOOL")
+	double totalTools();
+	
+	@Query("select count(c) from Chimpun c")
+	double totalChimpuns();
 }

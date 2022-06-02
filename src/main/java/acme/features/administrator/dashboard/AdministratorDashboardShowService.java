@@ -52,7 +52,9 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 		request.unbind(entity, model, "totalNumberOfComponents", "averageRetailPriceOfComponentsByTechnologyAndCurrency", "deviationRetailPriceOfComponentsByTechnologyAndCurrency",
 			"minimumRetailPriceOfComponentsByTechnologyAndCurrency", "maximumRetailPriceOfComponentsByTechnologyAndCurrency", "totalNumberOfTools",
 			"averageRetailPriceOfToolsByCurrency", "deviationRetailPriceOfToolsByCurrency", "minimumRetailPriceOfToolsByCurrency", "maximumRetailPriceOfToolsByCurrency",
-			"totalNumberOfPatronagesByStatus", "averagePatronagesBudgetByStats", "deviationPatronagesBudgetByStats", "minimumPatronagesBudgetByStats", "maximumPatronagesBudgetByStats");
+			"totalNumberOfPatronagesByStatus", "averagePatronagesBudgetByStats", "deviationPatronagesBudgetByStats", "minimumPatronagesBudgetByStats", "maximumPatronagesBudgetByStats",
+			"averageBudgetPriceOfChimpunsByCurrency", "deviationBudgetOfChimpunsByCurrency", "minimumBudgetOfChimpunsByCurrency","maximumBudgetOfChimpunsByCurrency",
+			"ratioOfToolsWithChimpun");
 	}
 
 
@@ -74,6 +76,17 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 		final Map<Pair<String, String>, Double> dvaRtBCT = new HashMap<>();
 		final Map<Pair<String, String>, Double> minRtBCT = new HashMap<>();
 		final Map<Pair<String, String>, Double> maxRtBCT = new HashMap<>();
+		final Map<String, Double>	averageBudgetPriceOfChimpunsByCurrency = new HashMap<>();
+		final Map<String, Double>	deviationBudgetOfChimpunsByCurrency = new HashMap<>();
+		final Map<String, Double>	minimumBudgetOfChimpunsByCurrency = new HashMap<>();
+		final Map<String, Double>	maximumBudgetOfChimpunsByCurrency = new HashMap<>();
+		
+		for(final Object[] obj: this.repository.operationsBudgetChimpunsByCurrency()) {
+			averageBudgetPriceOfChimpunsByCurrency.put(obj[0].toString(), Double.valueOf(obj[1].toString()));
+			deviationBudgetOfChimpunsByCurrency.put(obj[0].toString(), Double.valueOf(obj[2].toString()));
+			minimumBudgetOfChimpunsByCurrency.put(obj[0].toString(), Double.valueOf(obj[3].toString()));
+			maximumBudgetOfChimpunsByCurrency.put(obj[0].toString(), Double.valueOf(obj[4].toString()));
+		}
 		
 		for(final PatronageStatus type: PatronageStatus.values()) {
 			for(final Object[] obj: this.repository.operationsPatronagesByStatus(type)) {
@@ -114,6 +127,11 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 		result.setDeviationPatronagesBudgetByStats(mapDeviationPD);
 		result.setMinimumPatronagesBudgetByStats(mapMinumumPD);
 		result.setMaximumPatronagesBudgetByStats(mapMaximumPD);
+		result.setAverageBudgetPriceOfChimpunsByCurrency(averageBudgetPriceOfChimpunsByCurrency);
+		result.setDeviationBudgetOfChimpunsByCurrency(deviationBudgetOfChimpunsByCurrency);
+		result.setMinimumBudgetOfChimpunsByCurrency(minimumBudgetOfChimpunsByCurrency);
+		result.setMaximumBudgetOfChimpunsByCurrency(maximumBudgetOfChimpunsByCurrency);
+		result.setRatioOfToolsWithChimpun(this.repository.totalChimpuns()/this.repository.totalTools());
 		return result;
 	}
 	
