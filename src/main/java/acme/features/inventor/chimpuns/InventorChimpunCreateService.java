@@ -109,7 +109,7 @@ public class InventorChimpunCreateService implements AbstractCreateService<Inven
 		final int año = calCreation.get(Calendar.YEAR);
 		final int mes = calCreation.get(Calendar.MONTH);
 		final int dia = calCreation.get(Calendar.DAY_OF_MONTH);
-		entity.setCode(año+"/"+mes+"/"+dia);
+		entity.setCode(año+"."+mes+"."+dia);
 		
 		entity.setItem(this.repository.findItemById(request.getModel().getInteger("itemId")));
 
@@ -122,7 +122,7 @@ public class InventorChimpunCreateService implements AbstractCreateService<Inven
 		assert entity != null;
 		assert model != null;
 
-			
+		model.setAttribute("tools", this.repository.findAllToolsFromInventorWithoutChimpun(request.getPrincipal().getActiveRoleId()));
 		request.unbind(entity, model, "code", "creationMoment", "title", "description", "startTime", "endingTime", "budget", "optionalLink", "item");
 	}
 
