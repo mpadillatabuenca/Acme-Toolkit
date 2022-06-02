@@ -1,0 +1,4 @@
+recordIndex,code,creationMoment,title,description,startTime,endingTime,budget,optionalLink,key:item
+0,22/05/01,2022/05/01 08:00,chimpun-01,Description of chimpun 01,2022/10/01 08:00,2022/11/01 08:00,"EUR 17,000.19","https://www.google.com/",item-01
+1,22/04/17,2022/04/17 08:00,chimpun-02,Description of chimpun 02,2022/09/17 08:00,2022/10/17 08:00,"USD 20,500.00","https://www.google.com/",item-03
+2,22/03/17,2022/03/17 08:00,chimpun-03,Description of chimpun 03,2022/11/17 08:00,2022/12/17 08:00,"EUR 18,000.50","https://www.google.com/",item-06

@@ -22,29 +22,31 @@
 	</jstl:if>
 	<acme:input-textbox code="authenticated.inventor.chimpun.form.label.title" path="title"/>	
 	<acme:input-textbox code="authenticated.inventor.chimpun.form.label.description" path="description"/>	
-	<acme:input-textbox code="authenticated.inventor.chimpun.form.label.startTime" path="startTime"/>
-	<acme:input-textbox code="authenticated.inventor.chimpun.form.label.endingTime" path="endingTime"/>
-	<acme:input-textbox code="authenticated.inventor.chimpun.form.label.budget" path="budget"/>
+	<acme:input-moment code="authenticated.inventor.chimpun.form.label.startTime" path="startTime"/>
+	<acme:input-moment code="authenticated.inventor.chimpun.form.label.endingTime" path="endingTime"/>
+	<acme:input-money code="authenticated.inventor.chimpun.form.label.budget" path="budget"/>
 	<acme:input-textbox code="authenticated.inventor.chimpun.form.label.optionalLink" path="optionalLink"/>
+	<jstl:choose>	
+			<jstl:when test="${noToolsError}">
+				<acme:message code="authenticated.inventor.chimpun.form.button.noTools"></acme:message>
+			</jstl:when>
+			<jstl:otherwise>
+			<acme:input-select code="inventor.chimpun.form.label.toolUpdate" path="itemId">
+	   			<jstl:forEach items="${tools}" var="tool">
+					<acme:input-option code="${tool.getName()}" value="${tool.getId()}"/>
+				</jstl:forEach>
+			</acme:input-select>
+			</jstl:otherwise>
+		</jstl:choose>
 	
 	
 	<jstl:choose>	 
 		<jstl:when test="${acme:anyOf(command, 'show, update, delete')}">
-		<acme:input-select code="inventor.chimpun.form.label.toolUpdate" path="itemId">
-	   			<jstl:forEach items="${tools}" var="tool">
-					<acme:input-option code="${tool.getName()}" value="${tool.getId()}"/>
-				</jstl:forEach>
-			</acme:input-select>
 			<acme:button code="authenticated.inventor.chimpun.form.button.associatedTool" action="/inventor/item/show?id=${itemId}"/>
 			<acme:submit code="authenticated.inventor.chimpun.form.button.update" action="/inventor/chimpun/update"/>
 			<acme:submit code="authenticated.inventor.chimpun.form.button.delete" action="/inventor/chimpun/delete"/>
 		</jstl:when>
-		<jstl:when test="${acme:anyOf(command, 'create')}">
-		<acme:input-select code="inventor.chimpun.form.label.tool" path="itemId">
-	   			<jstl:forEach items="${tools}" var="tool">
-					<acme:input-option code="${tool.getName()}" value="${tool.getId()}"/>
-				</jstl:forEach>
-			</acme:input-select>
+		<jstl:when test="${acme:anyOf(command, 'create') && !noToolsError}">
 			<acme:submit code="authenticated.inventor.chimpun.form.button.create" action="/inventor/chimpun/create"/>
 		</jstl:when>		
 	</jstl:choose>

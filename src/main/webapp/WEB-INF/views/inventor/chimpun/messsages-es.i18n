@@ -21,8 +21,8 @@ authenticated.inventor.chimpun.form.label.code = Código
 authenticated.inventor.chimpun.form.label.creationMoment = Fecha de creación
 authenticated.inventor.chimpun.form.label.title = Título
 authenticated.inventor.chimpun.form.label.description = Descripción
-authenticated.inventor.chimpun.form.label.startTime = Comienzo del periodo (YYYY/MM/DD hh:mm)
-authenticated.inventor.chimpun.form.label.endingTime = Final del periodo (YYYY/MM/DD hh:mm)
+authenticated.inventor.chimpun.form.label.startTime = Comienzo del periodo
+authenticated.inventor.chimpun.form.label.endingTime = Final del periodo
 authenticated.inventor.chimpun.form.label.budget = Presupuesto
 authenticated.inventor.chimpun.form.label.item = Herramienta asociada
 
@@ -38,3 +38,5 @@ authenticated.inventor.chimpun.form.button.create = Crear chimpun
 authenticated.inventor.chimpun.form.button.update = Editar chimpun
 inventor.chimpun.form.label.tool = Selecciona herramienta
 inventor.chimpun.form.label.toolUpdate = Seleccionar herramienta (a actualizar)
+
+authenticated.inventor.chimpun.form.button.noTools = No quedan herramientas disponibles, debes crear una primero y luego asignársela a este chimpun

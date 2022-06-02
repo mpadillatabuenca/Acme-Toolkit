@@ -22,8 +22,8 @@ authenticated.inventor.chimpun.form.label.code = Code
 authenticated.inventor.chimpun.form.label.creationMoment = Creation date
 authenticated.inventor.chimpun.form.label.title = Title
 authenticated.inventor.chimpun.form.label.description = Description
-authenticated.inventor.chimpun.form.label.startTime = Start of the period (YYYY/MM/DD hh:mm)
-authenticated.inventor.chimpun.form.label.endingTime = End of the period (YYYY/MM/DD hh:mm)
+authenticated.inventor.chimpun.form.label.startTime = Start of the period
+authenticated.inventor.chimpun.form.label.endingTime = End of the period
 authenticated.inventor.chimpun.form.label.budget = Budget
 authenticated.inventor.chimpun.form.label.optionalLink = Optional link
 
@@ -39,3 +39,5 @@ authenticated.inventor.chimpun.form.button.create = Create chimpun
 authenticated.inventor.chimpun.form.button.update = Edit chimpun
 inventor.chimpun.form.label.tool = Select tool
 inventor.chimpun.form.label.toolUpdate = Select tool (to update)
+
+authenticated.inventor.chimpun.form.button.noTools = There are no tools to choose from, you have to create a tool first and then assign it to this chimpun

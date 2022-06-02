@@ -15,6 +15,7 @@ package acme.features.inventor.chimpuns;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
@@ -22,6 +23,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import acme.entities.chimpuns.Chimpun;
+import acme.entities.items.Item;
 import acme.entities.system_configurations.SystemConfiguration;
 import acme.framework.components.models.Model;
 import acme.framework.controllers.Errors;
@@ -135,8 +137,14 @@ public class InventorChimpunUpdateService implements AbstractUpdateService<Inven
 		assert request != null;
 		assert entity != null;
 		assert model != null;
+		final Collection<Item> tools = this.repository.findAllToolsFromInventorWithoutChimpun(request.getPrincipal().getActiveRoleId());
+		tools.add(entity.getItem());
 
-		model.setAttribute("tools", this.repository.findAllToolsFromInventorWithoutChimpun(request.getPrincipal().getActiveRoleId()));
+		if(this.repository.findAllToolsFromInventorWithoutChimpun(request.getPrincipal().getActiveRoleId()).size()==0) {
+			model.setAttribute("noToolsError", true);
+		}else {
+			model.setAttribute("tools", tools);
+		}
 		request.unbind(entity, model, "code", "creationMoment", "title", "description", "startTime", "endingTime", "budget", "optionalLink", "item");
 	}
 
