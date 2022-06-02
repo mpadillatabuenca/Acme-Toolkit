@@ -301,7 +301,7 @@ bg=gray
       <x>2700</x>
       <y>800</y>
       <w>690</w>
-      <h>310</h>
+      <h>390</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Form&gt;&gt;
 AdministratorDashboard
@@ -321,6 +321,11 @@ AdministratorDashboard
 + deviationPatronagesBudgetByStatus: Map&lt;PatronageStatus, Double&gt;
 + minimumPatronagesBudgetByStatus: Map&lt;PatronageStatus, Double&gt;
 + maximumPatronagesBudgetByStatus: Map&lt;PatronageStatus, Double&gt;
++ ratioOfToolsWithChimpun: double
++ averageBudgetPriceOfChimpunsByCurrency: Map&lt;String, Double&gt;		
++ deviationBudgetPriceOfChimpunsByCurrency: Map&lt;String, Double&gt;	
++ minimumBudgetPriceOfChimpunsByCurrency: Map&lt;String, Double&gt;				
++ maximumBudgetPriceOfChimpunsByCurrency: Map&lt;String, Double&gt;	
 bg=green</panel_attributes>
     <additional_attributes/>
   </element>
